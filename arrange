@@ -1,0 +1,14 @@
+#!/bin/bash
+search_dir="./files"
+
+for entry in "$search_dir"/*
+do
+    base_name=$(basename "$entry")
+    
+    first_char="${base_name:0:1}"
+    lower_char=$(echo "$first_char" | tr '[:upper:]' '[:lower:]')
+
+    dest_dir="/$lower_char"
+
+    mv "$entry" "./$dest_dir/"
+done
